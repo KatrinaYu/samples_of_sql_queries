@@ -1,7 +1,7 @@
 
 -- Having query 
 SELECT  first_name, last_name, 
-		count(emp_no), count(DISTINCT gender)
+        count(emp_no), count(DISTINCT gender)
   FROM employees
 WHERE birth_date > '1960-01-01' 
   AND hire_date < '1990-01-01'
