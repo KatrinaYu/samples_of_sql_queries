@@ -3,4 +3,4 @@
 
 ###### Structure of the document 
    - Creating table with analysis of students records (SQL Server)
-   - Having query (My SQL)
+   - Finding employees under certain conditions (My SQL)
