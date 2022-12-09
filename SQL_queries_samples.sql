@@ -28,15 +28,16 @@ ORDER BY max_grade DESC
 
 
 -- Finding employees under certain conditions (My SQL)
-SELECT  first_name, last_name, 
-        count(emp_no), count(DISTINCT gender)
-  FROM employees
-WHERE birth_date > '1960-01-01' 
-  AND hire_date < '1990-01-01'
-  AND first_name LIKE 'a%'
+SELECT  first_name, 
+	last_name, 
+        count(emp_no), 
+	count(DISTINCT gender)
+FROM employees
+	WHERE birth_date > '1960-01-01' 
+  	AND hire_date < '1990-01-01'
+  	AND first_name LIKE 'a%'
 GROUP BY first_name, last_name
-HAVING count(emp_no) > 1 
-   AND count(DISTINCT gender) = 2
+HAVING count(emp_no) > 1 AND count(DISTINCT gender) = 2
 ;
 
   
