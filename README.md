@@ -1,4 +1,4 @@
-## Hi! These are the samples of my SQL queries made while studying
+## Hi! These are my code style examples
 ###### Written in MySQL Workbench and Microsoft SQL Server
 
 ###### Structure of the document 
