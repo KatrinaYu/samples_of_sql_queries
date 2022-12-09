@@ -1,5 +1,33 @@
+-- Creating table with analysis of students records (SQL Server)
+SELECT CONCAT(UPPER(s.last_name), ', ', LOWER(s.first_name)) AS full_name,
+	COUNT(c.course_id) AS number_of_course,
+	ISNULL(MIN(g.grade), '0') AS min_grade,
+	ISNULL(MAX(g.grade), '0') AS max_grade,
+	ISNULL(AVG(g.grade), '0') AS av_grade,
 
--- Having query 
+CASE 
+	WHEN AVG(g.grade) >= 90 THEN 'A'
+	WHEN AVG(g.grade) >= 80 THEN 'B'
+	WHEN AVG(g.grade) >= 70 THEN 'C' 
+	ELSE 'F'
+END AS letter_grade,
+
+CASE 
+	WHEN COUNT(c.course_id) >= 1 THEN 'enrolled'
+	ELSE 'not enrolled'
+END AS enrollment
+
+FROM students AS s
+	FULL JOIN grades AS g
+	ON s.student_id = g.student_id
+	FULL JOIN courses AS c
+	ON g.course_id = c.course_id
+GROUP BY s.last_name, s.First_name
+ORDER BY max_grade DESC
+;
+
+
+-- Having query (My SQL)
 SELECT  first_name, last_name, 
         count(emp_no), count(DISTINCT gender)
   FROM employees
@@ -10,26 +38,11 @@ GROUP BY first_name, last_name
 HAVING count(emp_no) > 1 
    AND count(DISTINCT gender) = 2
 ;
-  
--- JOIN query
-SELECT first_name, last_name, dept_no
-  FROM employees AS emp
-LEFT JOIN dept_manager AS man
-      ON emp.emp_no = man.emp_no
-WHERE dept_no IS NOT NULL
-; 
 
--- CASE query
-SELECT ROUND(AVG(salary) ,0) AS rounded_avg_sal,
-CASE
-	WHEN salary BETWEEN 30000 AND 60000 THEN 'low_salary'
-	WHEN salary BETWEEN 60001 AND 110000 THEN 'mid_salary'
-	WHEN salary BETWEEN 110001 AND 180000 THEN 'high_salary'
-    ELSE 'empty' 
-END AS level_sal
-  FROM salaries
-GROUP BY level_sal
-;
+  
+
+
+
 
 
 
