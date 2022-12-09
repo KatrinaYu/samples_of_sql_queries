@@ -27,7 +27,7 @@ ORDER BY max_grade DESC
 ;
 
 
--- Having query (My SQL)
+-- Finding employees under certain conditions (My SQL)
 SELECT  first_name, last_name, 
         count(emp_no), count(DISTINCT gender)
   FROM employees
